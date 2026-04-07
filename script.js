@@ -1,37 +1,37 @@
-let heading = document.getElementById("mainHeading");
-let paragraph = document.getElementById("paragraph");
-let input = document.getElementById("input");
-
-let fontSize = 16;
-
-document.getElementById("changeTextBtn").addEventListener("click", function() {
-    if (input.value !== "") {
-        heading.innerHTML = input.value;
+function calculateResult() {
+    let n=document.getElementById("subjects").value;
+    let i;
+    let total=0;
+    for(i=0;i<n;i++){
+        let x=prompt("Enter subject no "+(i+1));
+        total+=parseInt(x);
     }
-});
-
-document.getElementById("bgColorBtn").onclick = function() {
-    document.body.style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-};
-
-document.getElementById("fontSizeBtn").addEventListener("click", function() {
-    fontSize += 2;
-    paragraph.style.fontSize = fontSize + "px";
-});
-
-document.getElementById("toggleBtn").addEventListener("click", function() {
-    if (paragraph.style.display === "none") {
-        paragraph.style.display = "block";
-    } else {
-        paragraph.style.display = "none";
-    }
-});
-
-document.getElementById("resetBtn").addEventListener("click", function() {
-    heading.innerHTML = "Welcome to JavaScript Lab";
-    paragraph.style.display = "block";
-    document.body.style.backgroundColor = "white";
-    fontSize = 16;
-    paragraph.style.fontSize = fontSize + "px";
-    input.value = "";
-});
+        let average=total/n;
+        let grade;
+        let p;
+        if(average>=90){
+            grade="A";}
+            else if(average>=80){
+                grade="B";
+            }
+            else if(average>=70){
+                grade="C";
+            }
+            else if(average>=60){
+                grade="D";
+            }
+            else if(average>=50){
+                grade="E";
+            }
+            else {
+                grade="F";
+            }
+            if(average>=40){
+                p="Passed";
+            }
+            else {
+                p="Failed";
+            }
+            let r=document.getElementById("result");
+            r.innerHTML="total marks: "+total+"<br/>" +"average: "+average+"<br/>"+"your grade is "+grade+"<br/>"+"you are "+p;
+}

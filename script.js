@@ -1,25 +1,37 @@
-const modal = new bootstrap.Modal(document.getElementById('productModal'));
+let heading = document.getElementById("mainHeading");
+let paragraph = document.getElementById("paragraph");
+let input = document.getElementById("input");
 
-const products = {
-  laptop: {
-    title: "ProBook Laptop",
-    desc: "Intel i7, 16GB RAM, 512GB SSD. Perfect for professionals."
-  },
-  headset: {
-    title: "SoundMax Headset",
-    desc: "Immersive surround sound with noise cancellation."
-  },
-  watch: {
-    title: "ChronoX Watch",
-    desc: "Smartwatch with health tracking and GPS."
-  }
+let fontSize = 16;
+
+document.getElementById("changeTextBtn").addEventListener("click", function() {
+    if (input.value !== "") {
+        heading.innerHTML = input.value;
+    }
+});
+
+document.getElementById("bgColorBtn").onclick = function() {
+    document.body.style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 };
 
-document.querySelectorAll('.open-modal').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const product = products[btn.dataset.product];
-    document.getElementById('modalTitle').innerText = product.title;
-    document.getElementById('modalBody').innerText = product.desc;
-    modal.show();
-  });
+document.getElementById("fontSizeBtn").addEventListener("click", function() {
+    fontSize += 2;
+    paragraph.style.fontSize = fontSize + "px";
+});
+
+document.getElementById("toggleBtn").addEventListener("click", function() {
+    if (paragraph.style.display === "none") {
+        paragraph.style.display = "block";
+    } else {
+        paragraph.style.display = "none";
+    }
+});
+
+document.getElementById("resetBtn").addEventListener("click", function() {
+    heading.innerHTML = "Welcome to JavaScript Lab";
+    paragraph.style.display = "block";
+    document.body.style.backgroundColor = "white";
+    fontSize = 16;
+    paragraph.style.fontSize = fontSize + "px";
+    input.value = "";
 });
